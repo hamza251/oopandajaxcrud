@@ -85,19 +85,25 @@ $('#lastname' ).keypress(function(e){
 		$('#efirstname').val(first);
 		$('#elastname').val(last);
 		$('#editbutton').val(memid);
+
+
 		$('#efirstname' ).keypress(function(e){
 			var regex = new RegExp("^[a-zA-Z]+$");
 			var str = String.fromCharCode(!e.charcode ? e.which : e.charcode);
-			if (regex.test(str)){
+			if (regex.test(str))
+			{
 				return true;
-			}else{
+			}
+			else
+			{
 			e.preventDefault();
 			$('.error').show();
 			$('.error').text("please enter alphabets");
 			return false;
 			}
 			});
-			$('#elastname' ).keypress(function(e){
+			$('#elastname' ).keypress(function(e)
+			{
 				var regex = new RegExp("^[a-zA-Z]+$");
 				var str = String.fromCharCode(!e.charcode ? e.which : e.charcode);
 				if (regex.test(str)){
@@ -109,9 +115,12 @@ $('#lastname' ).keypress(function(e){
 				return false;
 				}
 				});
+
 		document.getElementById("editbutton").disabled=true;
-$(document).ready(function () {
-	$('#efirstname' || '#elastname').on("change",function (){
+$(document).ready(function () 
+{
+	$('#efirstname' || '#elastname').on("change",function ()
+	{
 		var text = $(this).val();
 		if(text.length > 0){
 			document.getElementById("editbutton").disabled = false;
@@ -126,10 +135,12 @@ $(document).ready(function () {
 
 	});
 	
-    $('#editbutton').click(function(){
+    $('#editbutton').click(function()
+	{
 		var memid = $(this).val();
 		var editForm = $('#editForm').serialize();
-		$.ajax({
+		$.ajax
+		({
 			type: 'POST',
 			url: 'edit.php',
 			data: editForm + "&memid="+memid,
@@ -149,7 +160,8 @@ $(document).ready(function () {
 	});
 	//
 	//delete
-    $(document).on('click', '.delete', function(){
+    $(document).on('click', '.delete', function()
+	{
 		var memid = $(this).data('id');
 		var first = $('#first'+memid).text();
 		$('#delmem').modal('show');
@@ -157,7 +169,8 @@ $(document).ready(function () {
 		$('#delbutton').val(memid);
 	});
  
-	$('#delbutton').click(function(){
+	$('#delbutton').click(function()
+	{
 		var memid = $(this).val();
 		$.ajax({
 			type: 'POST',
@@ -165,7 +178,8 @@ $(document).ready(function () {
 			data: {
 				memid: memid,
 			},
-			success:function(){
+			success:function()
+			{
 				$('#delmem').modal('hide');
 				showTable();
 				$('#alert').slideDown();
@@ -181,8 +195,10 @@ $(document).ready(function () {
  
 });
 
-function showTable(){
-	$.ajax({
+function showTable()
+{
+	$.ajax
+	({
 		type: 'POST',
 		url: 'fetch.php',
 		data: {

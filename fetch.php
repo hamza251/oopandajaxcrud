@@ -1,6 +1,7 @@
 <?php
 	include('conn.php');
-	if(isset($_POST['fetch'])){
+	if(isset($_POST['fetch']))
+	{
 		?>
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
